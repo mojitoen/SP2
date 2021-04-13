@@ -2,6 +2,7 @@ from flask import *
 
 app = Flask(__name__)
 
+#Function index will return the results of render_template('test.html') and will be activated when the index or / is seen on the website.
 @app.route('/')
 def Index():
     return render_template('test.html')
