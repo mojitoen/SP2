@@ -3,9 +3,24 @@ from flask import *
 app = Flask(__name__)
 
 @app.route('/')
-@app.route('/<name>')
-def Index(name=None):
-    return render_template('test.html', name=name)
+def Index():
+    return render_template('test.html')
+
+@app.route('/tips1')
+def tips1():
+    return render_template('tips1.html')
+
+@app.route('/tips2')
+def tips2():
+    return render_template('tips2.html')
+
+@app.route('/tips3')
+def tips3():
+    return render_template('tips3.html')
+
+@app.route('/tips4')
+def tips4():
+    return render_template('tips4.html')
 
 @app.route('/odin/')
 @app.route('/odin/<name>')
