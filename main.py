@@ -19,6 +19,15 @@ def tips2():
 def tips3():
     return render_template('tips3.html')
 
+@app.route('/data', methods = ['POST', 'GET'])
+def data():
+    if request.method == 'GET':
+        return f"The URL /data is accessed directly, try going to /tips3 to submit form"
+    if request.method == 'POST':
+        form_data = request.form['name']
+
+        return render_template('data.html', form_data = form_data)
+
 @app.route('/tips4')
 def tips4():
     return render_template('tips4.html')
@@ -27,3 +36,6 @@ def tips4():
 @app.route('/odin/<name>')
 def odin(name=None):
     return render_template('odinstest.html', name=name)
+
+
+
