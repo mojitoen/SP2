@@ -48,7 +48,8 @@ def selection():
                 print("The password should be longer than 8 characters. Try again.")
                 selection()
             elif len >= 95:
-                print("There typically isn't anything called a password that's too long, but this password is too long for our program to handle. Try again!")
+                print("There typically isn't anything called a password that's too long, but this password is too "
+                      "long for our program to handle. Try again!")
                 selection()
         except Exception as e:
             #print(e)
