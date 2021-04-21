@@ -17,9 +17,11 @@ def passwordcheck(pw):
     else:
         point = 0
         print("Strong Password")
+        selection()
     if point == -1:
         print("Make sure your password contains at least 8 characters, including numbers, symbols and at least one "
               "large character.")
+        selection()
 
 
 def passwordgenerate(len):
@@ -27,7 +29,7 @@ def passwordgenerate(len):
     passw = random.sample(recipe, len)
     password = "".join(passw)
     print(password)
-
+    selection()
 
 
 def selection():
@@ -52,7 +54,7 @@ def selection():
                       "long for our program to handle. Try again!")
                 selection()
         except Exception as e:
-            #print(e)
+            # print(e)
             ##Unikt nok så stopper grensen på gyldige tall til TOM 94.
             ## Dette kan vel strengt tatt jobbes rundt og lages error-meldinger om dersom du har et tall over 94.
             print("You must input a valid number!")
