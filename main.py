@@ -1,6 +1,7 @@
 from flask import *
 
 import passwordgenerator
+import re
 
 app = Flask(__name__)
 
@@ -39,24 +40,43 @@ def pwgenerator():
         selection = request.form['selection']
         password = request.form['password']
         length = request.form['length']
-        print(selection)
+
         if selection == "1":
-            strength = passwordgenerator.passwordcheck(password)
+            strength = passwordgenerator.passwordcheck(password) ##Denne funksjonen returnerer kun enten 1 eller -1
+                                                                ## Det gjør det vanskelig
             if strength == 0:
-                wbreturn = "The password is strong!"
-                return render_template('passwordgenerator.html',form_data = wbreturn)
+                return render_template('passwordgenerator.html',form_data = "The password is strong!")
             elif strength == -1:
-                print("bad")
-                wbreturn = "Bad password.. >:("
-                return render_template('passwordgenerator.html',form_data = wbreturn)
+                return render_template('passwordgenerator.html',form_data = "Bad password.. >:(")
 
 
         elif selection == "2":
-            password = passwordgenerator.passwordgenerate(length)
-            print(password)
-            return password
-        else:
-            print("wtf")
+
+            if re.search("[_@$&/()=?`%¤#!]", length): ##Sjekker om det finnes symboler i length, da det vil krasje programmet.
+                return render_template('passwordgenerator.html', form_data="You can't use symbols to generate numbers!")
+
+            if length != "": ##Dersom lengden IKKE er tom kjører vi gjennom statementsene under.
+                pwlength = int(length) ## Konverterer til INT
+
+                if pwlength <= 0:
+                    return render_template('passwordgenerator.html', form_data="You can't do less than 0!")
+                elif pwlength < 94: ##Sjekker om INT er høyere enn samplinggrensen
+                    password = passwordgenerator.passwordgenerate(length)
+
+                    return render_template('passwordgenerator.html', form_data = "Your generated password is "+ password)
+
+                else: ##Resultatet av if pwlength; dersom det er høyere enn 94 så stopper vi nettsiden fra å krasje.
+                    return render_template('passwordgenerator.html', form_data="Too many characters!")
+            elif length == "" and password != "": ##Denne sjekker om det er skrevet noe i passordfeltet i stedet for length feltet og forteller at brukeren må fylle inn riktig felt.
+                return render_template('passwordgenerator.html', form_data="Wrong field!")
+            else: ##En catch-all fra if length != "" for å sørge for at brukeren legger inn info.
+                return render_template('passwordgenerator.html', form_data="You must input something!")
+
+        else: ##IKKE RØR DETTE ER CATCH ALLEN FOR DERSOM SELECTION ER NOE ANNET ENN 1 OG 2
+
+            return '<h1> wtf <h1/>'
+
+
 
 
 @app.route('/tips4')
