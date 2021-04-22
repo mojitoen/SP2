@@ -25,9 +25,10 @@ def passwordcheck(pw):
 
 def passwordgenerate(length):
     recipe = string.ascii_lowercase + string.ascii_uppercase + string.digits + string.punctuation
-    passw = random.sample(recipe, length)
+    lengthtoint = int(length)
+    passw = random.sample(recipe, lengthtoint)
     password = "".join(passw)
-    print(password)
+    return password
 
 
 def selection():

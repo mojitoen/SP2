@@ -38,24 +38,30 @@ def data():
 
 
 @app.route('/passwordgenerator', methods=['POST', 'GET'])
-def pwgenerator(answer):
+def pwgenerator():
     if request.method == 'GET':
         return f"The URL /passwordgenerator is accessed directly, try going to /passwordgenerator to submit form"
     if request.method == 'POST':
         selection = request.form['selection']
         password = request.form['password']
         length = request.form['length']
-        if selection == 1:
+        print(selection)
+        if selection == "1":
+            print("it is going to this one")
             strength = passwordgenerator.passwordcheck(password)
             if strength == 0:
-                answer = "Good password"
-                return render_template('passwordgenerator.html', answer=answer)
+                print("good")
+                return f"The password is strong!"
             elif strength == -1:
-                answer = "bad password"
-                return render_template('passwordgenerator.html', answer=answer)
+                print("bad")
+                return f"Bad password.. >:("
 
-        elif selection == 2:
-            passwordgenerator.passwordgenerate(length)
+        elif selection == "2":
+            password = passwordgenerator.passwordgenerate(length)
+            print(password)
+            return password
+        else:
+            print("wtf")
 
 
 @app.route('/tips4')
