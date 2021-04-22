@@ -6,7 +6,7 @@
 </head>
 <!---https://i.imgur.com/R1CFDFz.png--->
 <body>
-<style>
+ <style>
 body {
   background-image: url('https://i.imgur.com/R1CFDFz.png');
   background-repeat: no-repeat;
@@ -15,23 +15,21 @@ body {
 }
 </style>
 
-<h1 align="center">Tips 4</h1>
+<h1 align="center">Password Generator</h1>
 <p align="center"><strong><a href="/tips1">Link til tips 1</a> <a href="/tips2">Link til tips 2</a> <a href="/tips3">Link til tips 3</a> <a href="/tips4">Link til tips 4</a> </strong></p>
 <p align="center"><strong>______________________________________________________________________</strong></p>
-<p align="center"> Her er tips 4 </p>
-
-<form action="/passwordgenerator" method = "POST">
-<p align="center"> Her er password generator</p>
-<p>Write password to check here:<input type="text" name="password" /></p>
-<p>Write password length here:<input type="text" name="length"></p>
-<label for="selection">Select an option:</label>
-<select name="selection" id="selection">
-<option value="1">Check password strength</option>
-<option value="2">Generate strong password</option>
+ <p align="center"><strong>{{form_data}}</strong> </p>
+ <form align="center" action="/passwordgenerator" method = "POST">
+    <p align="center">Write password to check here:<input type="password" name="password" /></p>
+    <p align="center">Write password length here:<input type="text" name="length"></p>
+ <label align="center" for="selection">Select an option:</label>
+<select align="center" name="selection" id="selection">
+  <option align="center" value=1>Select password</option>
+  <option align="center" value=2>Generate password</option>
+    <p align="center"><input type = "submit" value = "submit" /></p>
 </select>
-<p><input type = "submit" value = "submit" /></p>
-<p><a href="/">Tilbake til /</a></p>
 </form>
+<p><a href="/">Tilbake til /</a></p>
 
 </body>
 </html>
