@@ -1,6 +1,7 @@
 import re
 import random
 import string
+from flask import *
 
 
 def passwordcheck(pw):
@@ -16,20 +17,17 @@ def passwordcheck(pw):
         point = -1
     else:
         point = 0
-        print("Strong Password")
-        selection()
-    if point == -1:
-        print("Make sure your password contains at least 8 characters, including numbers, symbols and at least one "
-              "large character.")
-        selection()
+    return point
+    # if point == -1:
+    #     print("Make sure your password contains at least 8 characters, including numbers, symbols and at least one "
+    #           "large character.")
 
 
-def passwordgenerate(len):
+def passwordgenerate(length):
     recipe = string.ascii_lowercase + string.ascii_uppercase + string.digits + string.punctuation
-    passw = random.sample(recipe, len)
+    passw = random.sample(recipe, length)
     password = "".join(passw)
     print(password)
-    selection()
 
 
 def selection():
@@ -42,14 +40,14 @@ def selection():
 
     elif sel == "2":
         try:
-            len = int(input("How long do you want the password to be?"))
+            length = int(input("How long do you want the password to be?"))
 
-            if len >= 8:
-                passwordgenerate(len)
-            elif len < 8:
+            if length >= 8:
+                passwordgenerate(length)
+            elif length < 8:
                 print("The password should be longer than 8 characters. Try again.")
                 selection()
-            elif len >= 95:
+            elif length >= 95:
                 print("There typically isn't anything called a password that's too long, but this password is too "
                       "long for our program to handle. Try again!")
                 selection()

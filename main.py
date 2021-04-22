@@ -1,5 +1,7 @@
 from flask import *
 
+import passwordgenerator
+
 app = Flask(__name__)
 
 
@@ -35,14 +37,25 @@ def data():
         return render_template('data.html', form_data=form_data)
 
 
-# @app.route('/passwordgenerator', methods=['POST', 'GET'])
-# def data():
-#     if request.method == 'GET':
-#         return f"The URL /passwordgenerator is accessed directly, try going to /passwordgenerator to submit form"
-#     if request.method == 'POST':
-#         form_data = request.form['valg']
-#
-#         return render_template('passwordgenerator.html', form_data=form_data)
+@app.route('/passwordgenerator', methods=['POST', 'GET'])
+def pwgenerator(answer):
+    if request.method == 'GET':
+        return f"The URL /passwordgenerator is accessed directly, try going to /passwordgenerator to submit form"
+    if request.method == 'POST':
+        selection = request.form['selection']
+        password = request.form['password']
+        length = request.form['length']
+        if selection == 1:
+            strength = passwordgenerator.passwordcheck(password)
+            if strength == 0:
+                answer = "Good password"
+                return render_template('passwordgenerator.html', answer=answer)
+            elif strength == -1:
+                answer = "bad password"
+                return render_template('passwordgenerator.html', answer=answer)
+
+        elif selection == 2:
+            passwordgenerator.passwordgenerate(length)
 
 
 @app.route('/tips4')
