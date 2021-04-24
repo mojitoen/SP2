@@ -40,13 +40,13 @@ def data():
 
 @app.route('/passwordgenerator', methods=['POST', 'GET'])
 def pwgenerator():
-    if request.method == 'GET':
-        return f"The URL /passwordgenerator is accessed directly, try going to /passwordgenerator to submit form"
-    if request.method == 'POST':
-        selection = request.form['selection']
-        password = request.form['password']
-        length = request.form['length']
-
+    # if request.method == 'GET':
+    #     return f"The URL /passwordgenerator is accessed directly, try going to /passwordgenerator to submit form"
+    if request.method == 'POST' or 'GET':
+        selection = request.form.get('selection')
+        password = request.form.get('password')
+        length = request.form.get('length')
+        print(selection, password, length)
         if selection == "1":
             strength = passwordgenerator.passwordcheck(password)  # Denne funksjonen returnerer kun enten 1 eller -1
             # Det gjør det vanskelig
