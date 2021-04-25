@@ -40,20 +40,21 @@ def data():
 
 @app.route('/passwordgenerator', methods=['POST', 'GET'])
 def pwgenerator():
-    # if request.method == 'GET':
-    #     return f"The URL /passwordgenerator is accessed directly, try going to /passwordgenerator to submit form"
-    if request.method == 'POST' or 'GET':
+    if request.method == 'GET':
+        return f"The URL /passwordgenerator is accessed directly, try going to /tips4 to submit form"
+    if request.method == 'POST':
         selection = request.form.get('selection')
         password = request.form.get('password')
         length = request.form.get('length')
         print(selection, password, length)
         if selection == "1":
-            strength = passwordgenerator.passwordcheck(password)  # Denne funksjonen returnerer kun enten 1 eller -1
-            # Det gjør det vanskelig
+            strength = passwordgenerator.passwordcheck(password)
             if strength == 0:
                 return render_template('passwordgenerator.html', form_data="The password is strong!")
             elif strength == -1:
                 return render_template('passwordgenerator.html', form_data="Bad password.. >:(")
+            else:
+                return render_template('passwordgenerator.html', form_data="Error...")
 
 
         elif selection == "2":
@@ -67,6 +68,9 @@ def pwgenerator():
 
                 if pwlength <= 0:
                     return render_template('passwordgenerator.html', form_data="You can't do less than 0!")
+                elif pwlength < 8:
+                    return render_template('passwordgenerator.html', form_data="The password must be at least 8 "
+                                                                               "characters.")
                 elif pwlength < 94:  # Sjekker om INT er høyere enn samplinggrensen
                     password = passwordgenerator.passwordgenerate(length)
 
@@ -76,8 +80,6 @@ def pwgenerator():
                     return render_template('passwordgenerator.html', form_data="Too many characters!")
             elif length == "" and password != "":  # Denne sjekker om det er skrevet noe i passordfeltet i stedet for
                 # length feltet og forteller at brukeren må fylle inn riktig felt.
-                return render_template('passwordgenerator.html', form_data="Wrong field!")
-            else:  # En catch-all fra if length != "" for å sørge for at brukeren legger inn info.
                 return render_template('passwordgenerator.html', form_data="You must input something!")
 
         else:  # IKKE RØR DETTE ER CATCH ALLEN FOR DERSOM SELECTION ER NOE ANNET ENN 1 OG 2

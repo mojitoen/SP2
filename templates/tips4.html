@@ -13,23 +13,75 @@ body {
   background-attachment: fixed;
   background-size: 100% 100%;
 }
+
+.content {
+  max-width: 450px;
+  margin: auto;
+  padding: 10px;
+}
 </style>
 
-<h1 align="center">Password Generator</h1>
-<p align="center"><strong><a href="/tips1">Link til tips 1</a> <a href="/tips2">Link til tips 2</a> <a href="/tips3">Link til tips 3</a> <a href="/tips4">Link til tips 4</a> </strong></p>
-<p align="center"><strong>______________________________________________________________________</strong></p>
- <p align="center"><strong>{{form_data}}</strong> </p>
- <form align="center" action="/passwordgenerator" method = "POST">
-    <p align="center">Write password to check here:<input type="password" name="password" /></p>
-    <p align="center">Write password length here:<input type="text" name="length"></p>
- <label align="center" for="selection">Select an option:</label>
-<select align="center" name="selection" id="selection">
-  <option align="center" value=1>Select password</option>
-  <option align="center" value=2>Generate password</option>
-    <p align="center"><input type = "submit" value = "submit" /></p>
+
+
+<!--Javascript for å bytte forms som vises når brukeren endrer valg-->
+<script type="text/javascript">
+function setForm(value) {
+
+    if(value == '1'){
+                document.getElementById('1').style='display:block;';
+                document.getElementById('2').style='display:none;';
+            }
+            else{
+
+                document.getElementById('2').style = 'display:block;';
+                document.getElementById('1').style = 'display:none;';
+            }
+
+}
+</script>
+
+<div class="content">
+<h1>Password Generator</h1>
+<p><strong><a href="/tips1">Link til tips 1</a> <a href="/tips2">Link til tips 2</a> <a href="/tips3">Link til tips 3</a> <a href="/tips4">Link til tips 4</a> </strong></p>
+<p><strong>______________________________________________________________________</strong></p>
+
+
+<!--Her er hvor brukeren kan velge. Legg merke til onchange funksjonen på linje 65-->
+<form action="/passwordgenerator" method="POST">
+<label for="selection">Select an option:</label>
+<select name="valg" id="valg" onchange="setForm(this.value)">
+<option value=1>Check password strength</option>
+<option value=2>Generate password</option>
+<!--<p><input type = "submit" value = "submit" /></p>-->
 </select>
 </form>
+
+<!--Første formen, til å sjekke passord. Ignorer den røde streken.-->
+<div id="1">
+<label>Check password</label>
+<form action="/passwordgenerator" method = "POST">
+<input type="hidden" id="selection" name="selection" value="1">
+<p>Write password to check here:<input type="password" name="password" /></p>
+<p><input type = "submit" value = "submit" /></p>
+</form>
+</div>
+
+<!--Andre formen, for å lage passord. Legg merke til at den by default er skjult på linje 56-->
+<div id="2" style="display: none">
+    <label>Generate password</label>
+    <form action="/passwordgenerator" method = "POST">
+    <input type="hidden" id="selection" name="selection" value="2">
+    <p>Write password length here:<input type="text" name="length"></p>
+    <p><input type = "submit" value = "submit" /></p>
+    </form>
+</div>
+
+
+
+<p><strong>{{form_data}}</strong> </p>
 <p><a href="/">Tilbake til /</a></p>
+</div>
+
 
 </body>
 </html>
