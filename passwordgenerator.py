@@ -28,7 +28,15 @@ def passwordgenerate(length):
     lengthtoint = int(length)
     passw = random.sample(recipe, lengthtoint)
     password = "".join(passw)
-    return password
+
+    # Nå laget en kvalitets-sjekk på passordet for å sørge for at alle passord som genereres følger samme krav som
+    # passwordcheck følger
+    qualitycheck = passwordcheck(password)
+
+    if qualitycheck == 0:
+        return password
+    elif qualitycheck == -1:
+        return passwordgenerate(length)
 
 
 def selection():
