@@ -25,8 +25,8 @@ def passwordgenerate(length):
     passw = random.sample(recipe, lengthtoint)
     password = "".join(passw)
 
-    # Nå laget en kvalitets-sjekk på passordet for å sørge for at alle passord som genereres følger samme krav som
-    # passwordcheck følger
+    # Naa laget en kvalitets-sjekk paa passordet for aa sorge for at alle passord som genereres folger samme krav som
+    # passwordcheck folger
     qualitycheck = passwordcheck(password)
 
     if qualitycheck == 0:
@@ -34,7 +34,7 @@ def passwordgenerate(length):
     elif qualitycheck == -1:
         return passwordgenerate(length)
 
-# Gammel kode nedenfor som ble brukt når passwordgeneratoren fortsatt bare var et python program. Kan brukes til testing
+# Gammel kode nedenfor som ble brukt naar passwordgeneratoren fortsatt bare var et python program. Kan brukes til testing
 # utenfor web-interfacet.
 
 # def selection():
@@ -60,7 +60,7 @@ def passwordgenerate(length):
 #                 selection()
 #         except Exception as e:
 #             # print(e)
-#             ##Unikt nok så stopper grensen på gyldige tall til TOM 94.
+#             ##Unikt nok saa stopper grensen paa gyldige tall til TOM 94.
 #             ## Dette kan vel strengt tatt jobbes rundt og lages error-meldinger om dersom du har et tall over 94.
 #             print("You must input a valid number!")
 #             selection()
