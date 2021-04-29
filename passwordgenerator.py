@@ -12,7 +12,7 @@ def passwordcheck(pw):
         point = -1
     elif not re.search("[0-9]", pw):
         point = -1
-    elif not re.search("[_@$&/()=?`%¤#!]", pw):
+    elif not re.search("[_@$&/()=?`%#!]", pw):
         point = -1
     else:
         point = 0
