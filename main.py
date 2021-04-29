@@ -13,7 +13,7 @@ def Index():
     return render_template('test.html')
 
 
-@app.route('/tips1')
+@app.route('/svindel')
 def tips1():
     return render_template('tips1.html')
 
@@ -87,7 +87,7 @@ def pwgenerator():
             return '<h1> wtf <h1/>'
 
 
-@app.route('/tips4')
+@app.route('/passordgenerator')
 def tips4():
     return render_template('tips4.html')
 

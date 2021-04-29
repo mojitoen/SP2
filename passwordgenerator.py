@@ -35,7 +35,7 @@ def passwordgenerate(length):
     elif qualitycheck == -1:
         return passwordgenerate(length)
 
-
+##This is no longer relevant as all logic is performed in website
 # Gammel kode nedenfor som ble brukt når passwordgeneratoren fortsatt bare var et python program. Kan brukes til testing
 # utenfor web-interfacet.
 
