@@ -31,7 +31,7 @@ def tips3():
 @app.route('/data', methods=['POST', 'GET'])
 def data():
     if request.method == 'GET':
-        return f"The URL /data is accessed directly, try going to /tips3 to submit form"
+        return "The URL /data is accessed directly, try going to /tips3 to submit form"
     if request.method == 'POST':
         form_data = request.form['name']
 
@@ -41,12 +41,12 @@ def data():
 @app.route('/passwordgenerator', methods=['POST', 'GET'])
 def pwgenerator():
     if request.method == 'GET':
-        return f"The URL /passwordgenerator is accessed directly, try going to /tips4 to submit form"
+        return "The URL /passwordgenerator is accessed directly, try going to /tips4 to submit form"
     if request.method == 'POST':
         selection = request.form.get('selection')
         password = request.form.get('password')
         length = request.form.get('length')
-        print(selection, password, length)
+
         if selection == "1":
             strength = passwordgenerator.passwordcheck(password)
             if strength == 0:
@@ -59,7 +59,7 @@ def pwgenerator():
 
         elif selection == "2":
 
-            if re.search("[_@$&/()=?`%¤#!]",
+            if re.search("[_@$&/()=?`%!]",
                          length):  # Sjekker om det finnes symboler i length, da det vil krasje programmet.
                 return render_template('passwordgenerator.html', form_data="You can't use symbols to generate numbers!")
 
