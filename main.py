@@ -64,7 +64,7 @@ def pwgenerator():
                 return render_template('passwordgenerator.html', form_data="You can't use symbols to generate numbers!")
 
             if length != "":  # Dersom lengden IKKE er tom kjører vi gjennom statementsene under.
-                pwlength = int(length)  ## Konverterer til INT
+                pwlength = int(length)  # Konverterer til INT
 
                 if pwlength <= 0:
                     return render_template('passwordgenerator.html', form_data="You can't do less than 0!")
@@ -84,7 +84,7 @@ def pwgenerator():
 
         else:  # IKKE RØR DETTE ER CATCH ALLEN FOR DERSOM SELECTION ER NOE ANNET ENN 1 OG 2
 
-            return '<h1> wtf <h1/>'
+            return '<h1> This should not happen.. <h1/>'
 
 
 @app.route('/passordgenerator')
