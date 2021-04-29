@@ -23,9 +23,9 @@ def tips2():
     return render_template('virus.html')
 
 
-@app.route('/tips3')
+@app.route('/forebygging')
 def tips3():
-    return render_template('tips3.html')
+    return render_template('forebygging.html')
 
 
 @app.route('/data', methods=['POST', 'GET'])
