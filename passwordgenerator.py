@@ -19,7 +19,6 @@ def passwordcheck(pw):
     return point
 
 
-
 def passwordgenerate(length):
     recipe = string.ascii_lowercase + string.ascii_uppercase + string.digits + string.punctuation
     lengthtoint = int(length)
@@ -35,7 +34,6 @@ def passwordgenerate(length):
     elif qualitycheck == -1:
         return passwordgenerate(length)
 
-##This is no longer relevant as all logic is performed in website
 # Gammel kode nedenfor som ble brukt når passwordgeneratoren fortsatt bare var et python program. Kan brukes til testing
 # utenfor web-interfacet.
 
