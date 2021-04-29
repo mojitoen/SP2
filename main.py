@@ -63,7 +63,7 @@ def pwgenerator():
                          length):  # Sjekker om det finnes symboler i length, da det vil krasje programmet.
                 return render_template('passwordgenerator.html', form_data="You can't use symbols to generate numbers!")
 
-            if length != "":  # Dersom lengden IKKE er tom kjører vi gjennom statementsene under.
+            if length != "":  # Dersom lengden IKKE er tom kjorer vi gjennom statementsene under.
                 pwlength = int(length)  ## Konverterer til INT
 
                 if pwlength <= 0:
