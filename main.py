@@ -71,7 +71,7 @@ def pwgenerator():
                 elif pwlength < 8:
                     return render_template('passwordgenerator.html', form_data="The password must be at least 8 "
                                                                                "characters.")
-                elif pwlength < 94:  # Sjekker om INT er høyere enn samplinggrensen
+                elif pwlength < 94:  # Sjekker om INT er hoyere enn samplinggrensen
                     password = passwordgenerator.passwordgenerate(length)
 
                     return render_template('passwordgenerator.html', form_data="Your generated password is " + password)
