@@ -76,10 +76,10 @@ def pwgenerator():
 
                     return render_template('passwordgenerator.html', form_data="Your generated password is " + password)
 
-                else:  # Resultatet av if pwlength; dersom det er hoyere enn 94 så stopper vi nettsiden fra å krasje.
+                else:  # Resultatet av if pwlength; dersom det er hoyere enn 94 saa stopper vi nettsiden fra aa krasje.
                     return render_template('passwordgenerator.html', form_data="Too many characters!")
             elif length == "" and password != "":  # Denne sjekker om det er skrevet noe i passordfeltet i stedet for
-                # length feltet og forteller at brukeren må fylle inn riktig felt.
+                # length feltet og forteller at brukeren maa fylle inn riktig felt.
                 return render_template('passwordgenerator.html', form_data="You must input something!")
 
         else:  # IKKE RoR DETTE ER CATCH ALLEN FOR DERSOM SELECTION ER NOE ANNET ENN 1 OG 2
