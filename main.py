@@ -10,17 +10,17 @@ app = Flask(__name__)
 # seen on the website.
 @app.route('/')
 def Index():
-    return render_template('test.html')
+    return render_template('index.html')
 
 
 @app.route('/svindel')
 def tips1():
-    return render_template('tips1.html')
+    return render_template('swindle.html')
 
 
-@app.route('/tips2')
+@app.route('/virus')
 def tips2():
-    return render_template('tips2.html')
+    return render_template('virus.html')
 
 
 @app.route('/tips3')
@@ -89,7 +89,7 @@ def pwgenerator():
 
 @app.route('/passordgenerator')
 def tips4():
-    return render_template('tips4.html')
+    return render_template('passordgenerator.html')
 
 
 @app.route('/odin/')
