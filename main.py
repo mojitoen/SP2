@@ -74,7 +74,7 @@ def pwgenerator():
                 elif pwlength < 94:  # Sjekker om INT er høyere enn samplinggrensen
                     password = passwordgenerator.passwordgenerate(length)
 
-                    return render_template('passwordgenerator.html', form_data="Your generated password is " + password)
+                    return render_template('passwordgenerator.html', form_data="Your generated password is: ", passdata=password)
 
                 else:  # Resultatet av if pwlength; dersom det er høyere enn 94 så stopper vi nettsiden fra å krasje.
                     return render_template('passwordgenerator.html', form_data="Too many characters!")

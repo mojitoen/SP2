@@ -61,21 +61,20 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <div class="w3-content">
 
 
-        <div class="w3-twothird">
-            <h1>Om Passordgeneratoren</h1>
-            <h5 class="w3-padding-32">Husk å være obs på hvor dere faktisk skriver inn passordet deres. Siden passordet sendes over internett til back-enden vår vil det være risikoer og passordsjekkeren burde kun brukes for teoretisk test.
+            <div class="w3-twothird">
+                <h1>Om Passordgeneratoren</h1>
+                <h5 class="w3-padding-32">Husk å være obs på hvor dere faktisk skriver inn passordet deres.
+                Siden passordet sendes over internett til back-enden vår vil det være risikoer og passordsjekkeren burde kun brukes for teoretisk test.
                 Hele koden til alt som involverer denne nettsiden kan man finne <a href="https://github.com/mojitoen/SP2">HER</a>, og der kan man se hva som foregår med hvilken-enn tekst man skriver inn i feltene her.
-            </h5>
-            <h1>Hva skjer med teksten du legger inn i passordgeneratoren</h1>
-      <h5 class="w3-padding-32">Svindel HER csed do s nisi ut aliquip ex ea commodo consequat.</h5>
-    </div>
+                </h5>
+                <h1>Hva skjer med teksten du legger inn i passordgeneratoren</h1>
+                <h5 class="w3-padding-32">Svindel HER csed do s nisi ut aliquip ex ea commodo consequat.</h5>
+            </div>
 
         </div>
     </div>
-</div>
 
-
-<!--Javascript for å bytte forms som vises når brukeren endrer valg-->
+<!--Script for å velge generator eller sjekkeren-->
 <script type="text/javascript">
 function setForm(value) {
 
@@ -92,6 +91,17 @@ function setForm(value) {
 }
 </script>
 
+<!--Script som kopierer teksten fra passord-outputten-->
+<script type="text/javascript">
+function copypass() {
+  var copyText = document.getElementById("passoutput");
+  copyText.select();
+  copyText.setSelectionRange(0, 100)
+  document.execCommand("copy");
+  alert("Passordet er kopiert.");
+}
+</script>
+
 <div class="content">
     <h1>Passord Generator</h1>
 
@@ -102,7 +112,6 @@ function setForm(value) {
         <select name="valg" id="valg" onchange="setForm(this.value)">
             <option value=1>Check password strength</option>
             <option value=2>Generate password</option>
-            <!--<p><input type = "submit" value = "submit" /></p>-->
         </select>
     </form>
 
@@ -127,11 +136,11 @@ function setForm(value) {
     </div>
 
 
-
     <p><strong>{{form_data}}</strong> </p>
+    <input type="text" value="{{passdata}}" id="passoutput">
+    <button onclick="copypass()">Copy text</button>
 
 </div>
-
 
 
 
