@@ -59,7 +59,7 @@ def pwgenerator():
 
         elif selection == "2":
 
-            if re.search("[_@$&/()=?`%¤#!]",
+            if re.search("[_@$&/()=?`%#!]",
                          length):  # Sjekker om det finnes symboler i length, da det vil krasje programmet.
                 return render_template('passwordgenerator.html', form_data="You can't use symbols to generate numbers!")
 
