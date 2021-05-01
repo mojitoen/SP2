@@ -50,11 +50,11 @@ def pwgenerator():
         if selection == "1":
             strength = passwordgenerator.passwordcheck(password)
             if strength == 0:
-                return render_template('passwordgenerator.html', form_data="The password is strong!")
+                return render_template('passwordgenerator.html', sjekker="The password is strong!")
             elif strength == -1:
-                return render_template('passwordgenerator.html', form_data="Bad password.. >:(")
+                return render_template('passwordgenerator.html', sjekker="Bad password.. >:(")
             else:
-                return render_template('passwordgenerator.html', form_data="Error...")
+                return render_template('passwordgenerator.html', sjekker="Error...")
 
 
         elif selection == "2":

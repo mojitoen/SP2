@@ -110,35 +110,39 @@ function copypass() {
     <form action="/passwordgenerator" method="POST">
         <label for="selection">Select an option:</label>
         <select name="valg" id="valg" onchange="setForm(this.value)">
-            <option value=1>Check password strength</option>
             <option value=2>Generate password</option>
+            <option value=1>Check password strength</option>
         </select>
     </form>
 
     <!--Første formen, til å sjekke passord. Ignorer den røde streken.-->
-    <div id="1">
+    <div id="1" style="display: none">
         <label>Check password</label>
         <form action="/passwordgenerator" method = "POST">
             <input type="hidden" id="selection" name="selection" value="1">
             <p>Write password to check here:<input type="password" name="password" /></p>
             <p><input type = "submit" value = "submit" /></p>
+            <p><strong>{{sjekker}}</strong> </p>
         </form>
     </div>
 
     <!--Andre formen, for å lage passord. Legg merke til at den by default er skjult på linje 56-->
-    <div id="2" style="display: none">
+    <div id="2">
         <label>Generate password</label>
         <form action="/passwordgenerator" method = "POST">
             <input type="hidden" id="selection" name="selection" value="2">
             <p>Write password length here:<input type="number" min="8" max="93" name="length"></p>
             <p><input type = "Submit" value = "submit" /></p>
+                <p><strong>{{form_data}}</strong> </p>
+                <input type="text" value="{{passdata}}" id="passoutput">
+                <button onclick="copypass()">Copy text</button>
+                <p><strong>{{sjekker}}</strong> </p>
         </form>
     </div>
 
 
-    <p><strong>{{form_data}}</strong> </p>
-    <input type="text" value="{{passdata}}" id="passoutput">
-    <button onclick="copypass()">Copy text</button>
+
+
 
 </div>
 
